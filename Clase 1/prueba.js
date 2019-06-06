@@ -6,7 +6,6 @@ const inventario = [
   {tipo:   "maquina", valor:   77}
 ]
 
-// let valorTotalMaquina = TU_CÓDIGO_AQUÍ
-console.log('hola');
-console.log('como va');
-// console.log(valorTotalMaquina);
+let valorTotalMaquina = TU_CÓDIGO_AQUÍ
+
+console.log(valorTotalMaquina);
