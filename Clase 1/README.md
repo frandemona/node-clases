@@ -190,3 +190,19 @@ Gritador.prototype.hablar = function(texto) {
 
 new Gritador("Dr. Bocagrande").hablar("hola, que tal?")
 ```
+
+11. sdfasdfa
+```js
+```
+12. asdfasd
+```js
+```
+13. sdfsa
+```js
+```
+14. sadfa
+```js
+```
+15. sdfasdf
+```js
+```
