@@ -1,5 +1,5 @@
 ## Ejercicios Clase 2 - Node
-### Teórica: https://
+### Teórica: https://mndy.pw/nodeclase2
 ##### 13/06/2018
 
 ---
