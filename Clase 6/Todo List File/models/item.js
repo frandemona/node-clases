@@ -5,17 +5,17 @@ const filename = path.join(__dirname,'../data/items.json');
 let items = require(filename);
 
 const itemSchema = {
-  find: function() {
-    return new Promise((resolve, reject) => {
+	find: function () {
+		return new Promise((resolve, reject) => {
       if (!Array.isArray(items)) {
-        reject({
-          message: 'Data erronea!',
-          status: 202
-        });
+          reject({
+              message: 'Data Erronea',
+              status: 202
+          });
       }
       resolve(items);
-    })
-  },
+    });
+	},
 	findOne: function (id) {
 		return new Promise((resolve, reject) => {
       if (!Array.isArray(items)) {
@@ -142,6 +142,6 @@ const itemSchema = {
       resolve(newItems);
     });
 	},
-}
+};
 
 module.exports = itemSchema;
