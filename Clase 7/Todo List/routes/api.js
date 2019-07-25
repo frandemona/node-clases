@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const itemController = require('../controller/itemController');
+const userController = require('../controller/userController');
 
 router
   .route('/item/:id')
@@ -8,6 +9,8 @@ router
   .delete(itemController.borrarItem);
 
 router.post('/crear', itemController.crear);
+
+router.post('/crearUsuario', userController.crear);
 
 router.post('/actualizar', itemController.actualizarNombre);
 

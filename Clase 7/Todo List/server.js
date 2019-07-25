@@ -4,6 +4,10 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
+const passport = require('passport');
+
+// Configuración de Passport
+require('./config/passport')(passport);
 
 // Inicializamos DB
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todoDB';
