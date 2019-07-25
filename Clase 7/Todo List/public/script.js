@@ -17,9 +17,7 @@ $(document).ready(function (){
         type: 'POST',
         data: item,
         success: function (response){
-          setTimeout(function(){
-            window.location.href = '/';  
-          }, 400);
+          window.location.href = '/';  
         },
         error: function (err){
           console.log(err);
@@ -38,7 +36,7 @@ $(document).ready(function (){
     if (input !== '') {
       item = {
         item: input,
-        id: id
+        _id: id
       }
       
       itemInput.val('');
@@ -47,9 +45,7 @@ $(document).ready(function (){
         type: 'POST',
         data: item,
         success: function (response){
-          setTimeout(function(){
-            window.location.href = '/';  
-          }, 400);
+          window.location.href = '/';  
         },
         error: function (err){
           console.log(err);
@@ -77,9 +73,7 @@ $(document).ready(function (){
       url: 'api/item/'+id,
       method: 'PUT',
       success: function (result){
-        setTimeout(function(){
-          location.reload();  
-        }, 400);
+        location.reload();
       },
       error: function (err){
         console.log(err);
@@ -95,9 +89,7 @@ $(document).ready(function (){
         url: 'api/item/'+id,
         type: 'DELETE',
         success: function (response){
-          setTimeout(function(){
-            location.reload();  
-          }, 400);
+          location.reload();
         },
         error: function (err){
           console.log(err);
@@ -113,9 +105,7 @@ $(document).ready(function (){
       url: 'api/item/'+id,
       type: 'DELETE',
       success: function (response){
-        setTimeout(function(){
-          location.reload();  
-        }, 400);
+        location.reload();
       },
       error: function (err){
         console.log(err);
@@ -140,6 +130,63 @@ $(document).ready(function (){
     let id = $('#editarItem').data('id');
     if (e.key === 'Enter'){
       editarTodoItem(e, id);
+    }
+  });
+
+  $('#registrarse').on('click', function(e){
+    e.preventDefault();
+    $( ".alert" ).remove();
+  
+    let nameInput = $('#name'),
+        name = nameInput.val().trim(),
+        emailInput = $('#email'),
+        email = emailInput.val().trim(),
+        passwordInput = $('#password'),
+        password = passwordInput.val(),
+        password2Input = $('#password2'),
+        password2 = password2Input.val(),
+        user;
+
+    if (password !== password2) {
+      $('.form').prepend('<div class="alert alert-danger" role="alert">Las contraseñas son diferentes</div>');
+      return;
+    }
+
+    if (password.length < 4) {
+      $('.form').prepend('<div class="alert alert-danger" role="alert">La contraseña elegida es muy corta, debe tener como mínimo 4 caracteres</div>');
+      return;
+    }
+  
+    if (name !== '' && email !== '') {
+      user = {
+        name: name,
+        email: email,
+        password: password,
+        password2: password2,
+      };
+      
+      nameInput.val('');
+      emailInput.val('');
+      passwordInput.val('');
+      password2Input.val('');
+      $.ajax({
+        url: '/api/crearUsuario',
+        type: 'POST',
+        data: user,
+        success: function (response){
+          if (response.error) {
+            $('.form').prepend('<div class="alert alert-danger" role="alert">' + response.error + '</div>');
+          } else {
+            window.location.href = '/login';
+          }
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      });
+    } else {
+      $('.form').prepend('<div class="alert alert-danger" role="alert">Verifique haber completado los campos</div>');
+      return;
     }
   });
   
