@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-lg-offset-3">
+      <h1 class="text-center">Todo List</h1>
+      <h3 class="text-center">Crear Tarea</h3>
+      <form class="form-inline" action="/api/crear" method="POST">
+        <div class="form-group mx-auto d-flex col-xs-12 col-lg-8 offset-lg-2">
+          <input type="text" class="form-control mr-2 flex-grow-1 flex-fill" placeholder="Ingresar tarea..." name="item" id="item" autofocus>
+          <button id="crear" class="btn btn-primary" type="button" name="submit">Crear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{#if items}}
+    <div class="row mt-5">
+      <div class="col-lg-8 offset-lg-2">
+        <h3>Tareas A Completar</h3>
+        {{#each items}}
+          {{#unless completado}}
+            <div class="item row shadow-sm align-items-center rounded m-2 p-2 bg-light justify-content-between">
+              <span>{{item}}</span>
+              <div class="btn-group" role="group" aria-label="Action Buttons">
+                <button data-id="{{_id}}" type="button" class="btn btn-success completo">Completado</button>
+                <button data-id="{{_id}}" type="button" class="btn btn-secondary editar">Editar</button>
+                <button data-id="{{_id}}" type="button" class="btn btn-danger borrar">Borrar</button>
+              </div>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-8 offset-lg-2">
+        <h3>Tareas Completadas</h3>
+        {{#each items}}
+          {{#if completado}}
+            <div class="item row shadow-sm align-items-center rounded m-2 p-2 bg-light justify-content-between">
+              <span>{{item}}</span>
+              <div class="btn-group" role="group" aria-label="Action Buttons">
+                <button data-id="{{_id}}" type="button" class="btn btn-danger borrar-completado">Borrar</button>
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+</div>
