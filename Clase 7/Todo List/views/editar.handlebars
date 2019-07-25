@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h1 class="text-center">Editar Tarea</h1>
+      <form class="form-inline">
+        <div class="form-group mb-2 d-flex col-xs-12 col-lg-8 offset-lg-2">
+          <label for="editarItem" class="sr-only">Editar Tarea</label>
+          <input type="text" placeholder="Editar Tarea" class="form-control mr-2 flex-grow-1 flex-fill" value="{{item}}" id="editarItem" data-id="{{id}}" autofocus>
+          <button data-id="{{id}}" id="editar" class="btn btn-warning" type="submit" name="submit">Editar</button>
+        </div>
+      </form>
+      <hr>
+      <a href="/"><button class="btn btn-primary">Volver</button></a>
+    </div>   
+  </div>
+</div>
