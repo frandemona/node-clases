@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/User');
+const {check, validationResult } = require('express-validator');
 
 module.exports = {
   loginView: function (req, res){
@@ -37,6 +38,10 @@ module.exports = {
 
   },
   login: function(req, res, next){
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
     passport.authenticate('local', {
       successRedirect:'/',
       failureRedirect: '/login'
