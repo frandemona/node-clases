@@ -8,7 +8,7 @@ const passport = require('passport');
 
 // Cargamos Modelos
 require('./models/User');
-// require('./models/Story');
+require('./models/Reviews');
 
 // Configuración Passport
 require('./config/passport')(passport);
@@ -16,9 +16,18 @@ require('./config/passport')(passport);
 // Cargar Rutas
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-// const feed = require('./routes/feeds');
+const reviews = require('./routes/reviews');
 
 const keys = require('./config/keys');
+
+const {
+  truncate,
+  stripTags,
+  changeStatusLang,
+  formatDate,
+  select,
+  editIcon
+} = require('./helpers/hbs');
 
 // Conexión Mongoose
 mongoose.connect(keys.mongoURI, {
@@ -41,6 +50,14 @@ app.use(methodOverride('_method'));
 
 // /Handlebar Middleware
 app.engine('handlebars', exphbs({
+  helpers: {
+    truncate: truncate,
+    stripTags: stripTags,
+    formatDate: formatDate,
+    changeStatusLang: changeStatusLang,
+    select: select,
+    editIcon: editIcon
+  },
   defaultLayout: 'main'
 }))
 app.set('view engine', 'handlebars');
@@ -67,7 +84,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Usar Rutas
 app.use('/', index);
 app.use('/auth', auth);
-// app.use('/stories', stories);
+app.use('/reviews', reviews);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

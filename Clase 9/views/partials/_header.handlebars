@@ -1,0 +1,33 @@
+<nav class="grey darken-3">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo center">MovieFeed</a>
+      <a href="#" data-activates="main-menu" class="button-collapse show-on-large"><i class="fa fa-bars"></i></a>
+      <!-- RIGHT NAV -->
+      <ul class="right hide-on-small-only">
+        {{#if user}}
+        <li><a href="/dashboard">Inicio</a></li>
+        <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
+        {{else}}
+        <li><a href="/reviews"><i class="fa fa-book"></i> Críticas Públicas</a></li>
+        {{/if}}
+      </ul>
+      <!-- SIDE MENU -->
+      <ul class="side-nav" id="main-menu">
+        {{#if user}} 
+        {{else}}
+        <li>
+          <a class="btn red darken-1" href="/auth/google"><i class="fa fa-google left"></i> Iniciar Sesión</a>
+        </li>
+        {{/if}}
+        <li><a href="/reviews"><i class="fa fa-book"></i> Críticas Públicas</a></li>
+        {{#if user}}
+        <li class="divider"></li>
+        <li><a href="/dashboard"><i class="fa fa-cog"></i> Críticas</a></li>
+        <li><a href="/reviews/my"><i class="fa fa-user"></i> Mis Críticas</a></li>
+        <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+<h1>Bienvenido {{user.firstName}}</h1>
+<h4>Tus Críticas</h4>
+{{#if reviews}}
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Rating</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reviews}}
+        <tr>
+          <td><a href="/reviews/show/{{id}}">{{title}}</a></td>
+          <td>{{ranking}}</td>
+          <td>{{formatDate data 'D [de] MMMM YYYY'}}</td>
+          <td><span class="dash-status">{{changeStatusLang status}}</span></td>
+          <td>
+            <a class="btn left-align" href="/reviews/edit/{{id}}"><i class="fa fa-pencil"></i> Editar</a>
+
+            <form action="/reviews/{{id}}?_method=DELETE" method="post" id="delete-form">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn red"><i class="fa fa-remove"></i> Borrar</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>No subiste ninguna crítica todavía</p>
+{{/if}}

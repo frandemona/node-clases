@@ -9,8 +9,8 @@ router.get('/google/callback',
     res.redirect('/');
   });
 
-  router.get('/cerrar-sesion', (req, res) => {
-    res.logout();
+  router.get('/logout', (req, res) => {
+    req.logout();
     res.redirect('/');
   });
 
