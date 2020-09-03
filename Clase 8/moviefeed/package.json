@@ -10,15 +10,15 @@
   "author": "Mondey",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.4",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.5",
-    "moment": "^2.18.1",
-    "mongoose": "^4.11.12",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.2",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "1.19.1"
+    "nodemon": "2.0.4"
   }
 }
